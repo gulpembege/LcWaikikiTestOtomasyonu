@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,12 +33,18 @@ public class CategoryPage {
     @FindBy(xpath = "//*[@class='color-filter-option__text']")
     private List<WebElement> colorFilterOptionList;
 
+    @FindBy(xpath = "//*[@class='dropdown-button__button']")
+    private WebElement sortButton;
+
+    @FindBy(xpath = "//*[@class='dropdown-button__option']")
+    private List<WebElement> sortDropdownMenu;
+
 
 
 
     public CategoryPage productSelect(int productNo) { // karsimiza gelen urunlerden istenilen urune tiklamaya yarayan method
 
-        productList.get(productNo - 1);
+        productList.get(productNo - 1).click();
         return this;
     }
 
@@ -47,54 +54,69 @@ public class CategoryPage {
 
         for (WebElement filters : filterCategoryList) {
 
-            String filterName = filters.getText();
+            try {
+                String filterName = filters.getText();
 
-            if (!filterName.equalsIgnoreCase("RENK") && filterName.equalsIgnoreCase(filterCategory)) {
+                if (!filterName.equalsIgnoreCase("RENK") && filterName.equalsIgnoreCase(filterCategory)) {
 
-                ReusableMethods.scrollToElement(Driver.getDriver(), filters);
-                ReusableMethods.wait(1);
+                    ReusableMethods.scrollToElement(Driver.getDriver(), filters);
+                    ReusableMethods.wait(1);
 
-                for (WebElement option : filterOptionList) {
-                    String optionName = option.getText();
-                    if (optionName.equalsIgnoreCase(filter)) {
-                        option.click();
-                        ReusableMethods.wait(1);
-                        break;
+                    for (WebElement option : filterOptionList) {
+                        String optionName = option.getText();
+                        if (optionName.equalsIgnoreCase(filter)) {
+                            option.click();
+                            ReusableMethods.wait(1);
+                            break;
+                        }
+
+                    }
+
+                } else if (filterName.equalsIgnoreCase("RENK")) {
+
+                    ReusableMethods.scrollToElement(Driver.getDriver(), filters);
+                    ReusableMethods.wait(1);
+
+                    for (WebElement colorOption : colorFilterOptionList) {
+                        String colorOptionName = colorOption.getText();
+                        if (colorOptionName.equalsIgnoreCase(filter)) {
+                            colorOption.click();
+                            ReusableMethods.wait(1);
+                            break;
+                        }
+
                     }
 
                 }
 
-             filterName = filters.getText();
+            } catch (
+                    StaleElementReferenceException e) {  // stale element hatasi aldigim icin renk filtreleri categorisini tekrar tanimladim
 
-            } else if (filterName.equalsIgnoreCase("RENK")){
-
-                ReusableMethods.scrollToElement(Driver.getDriver(), filters);
-                ReusableMethods.wait(1);
-
-                for (WebElement colorOption : colorFilterOptionList) {
-                    String colorOptionName = colorOption.getText();
-                    if (colorOptionName.equalsIgnoreCase(filter)) {
-                        colorOption.click();
-                        ReusableMethods.wait(1);
-                        break;
-                    }
-
-                }
+                filterCategoryList = Driver.getDriver().findElements(By.xpath("//*[@class='collapsible-filter-container__header']"));
 
             }
-
         }
         return this;
     }
 
-    public CategoryPage sortOptions(){  //  urunleri istenilen sekilde siralama methodu
+    public CategoryPage sortOptions(String sortOption) {  //  urunleri istenilen sekilde siralama methodu
 
         ReusableMethods.wait(2);
         ReusableMethods.scrollToTop(Driver.getDriver());
-        ReusableMethods.wait(10);
+        sortButton.click();
+
+        for (WebElement option :sortDropdownMenu){
+            String optionName = option.getText();
+            if (optionName.equalsIgnoreCase(sortOption)){
+                option.click();
+                ReusableMethods.wait(1);
+            }
+
+        }
 
 
 
         return this;
     }
 }
+

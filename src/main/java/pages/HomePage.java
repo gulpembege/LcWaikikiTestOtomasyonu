@@ -57,7 +57,6 @@ public class HomePage {
             if (nameOfCategory.equalsIgnoreCase(categoryName)) {
                 actions.moveToElement(category).perform();
                 ReusableMethods.wait(2);
-                System.out.println("secilen kategori " + nameOfCategory);
                 break;
 
             }
@@ -85,7 +84,6 @@ public class HomePage {
             String nameOfCategory = categoryProduct.getText();
             if (nameOfCategory.equalsIgnoreCase(categoryProductName)) {
                 categoryProduct.click();
-                System.out.println("secilern urun " + nameOfCategory);
                 break;
             }
 
