@@ -5,11 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
-import utils.ReusableMethods;
 
 import java.util.List;
 
-public class ProductPage {
+public class ProductPage extends BasePage {
 
     public ProductPage(){
         PageFactory.initElements(Driver.getDriver(),this);

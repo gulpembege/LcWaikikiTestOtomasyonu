@@ -1,17 +1,17 @@
 package pages;
 
-import dev.failsafe.internal.util.Assert;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
-import utils.ReusableMethods;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends BasePage {
 
     public HomePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -35,6 +35,8 @@ public class HomePage {
     private WebElement cookieAccept;
 
 
+    @Step("Login page'e gider")
+    @Description("login sayfasina yonlendirme methodu")
     public HomePage navigateLoginPage() { // login sayfasina yonlendirme methodu
 
         if (cookieAccept.isDisplayed()){ //  cookieler kabul edilir
@@ -42,12 +44,13 @@ public class HomePage {
         }
 
         actions.moveToElement(loginDropdown).perform();
-        ReusableMethods.wait(2);
+        wait(2);
         actions.click(loginButton).perform();
         return this;
 
     }
 
+    @Step("{0} kategorisinin ustune gelir")
     public HomePage chooseCategory(String categoryName) { // istenilen kategoriyi secip uzerine hover eden method
 
         for (WebElement category : categoryList) {
@@ -56,7 +59,7 @@ public class HomePage {
 
             if (nameOfCategory.equalsIgnoreCase(categoryName)) {
                 actions.moveToElement(category).perform();
-                ReusableMethods.wait(2);
+                wait(2);
                 break;
 
             }
@@ -65,20 +68,24 @@ public class HomePage {
         // ReusableMethods.fullpageScreenshot(Driver.getDriver(), "categories");
     }
 
+
+
+    @Step("Alt kategorilerden {0} kategorisinin ustune gelir")
     public HomePage chooseSubCategory(String subCategoryName) { // istenilen alt kategoriyi secip uzerine hover eden method
         subCategoryName = subCategoryName.toUpperCase();
 
         WebElement subCategory = Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + subCategoryName + "']"));
         actions.moveToElement(subCategory).perform();
-        ReusableMethods.wait(2);
+        wait(2);
 
         return this;
         //  ReusableMethods.webElementSS(subCategory);
 
     }
 
+    @Step("Acilan kategorilerden {0} secer")
     public HomePage chooseCategoryProduct(String categoryProductName) { // Acilan dropdownmenuden istenilen urun kategorisine tiklayan methodu
-        ReusableMethods.wait(2);
+        wait(2);
         for (WebElement categoryProduct : categoryProductsList) {
 
             String nameOfCategory = categoryProduct.getText();

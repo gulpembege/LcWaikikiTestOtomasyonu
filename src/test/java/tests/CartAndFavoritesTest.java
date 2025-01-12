@@ -1,16 +1,19 @@
 package tests;
 
+
+import io.qameta.allure.testng.AllureTestNg;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CategoryPage;
 import pages.HomePage;
 import pages.LoginPage;
-import base.BaseTest;
 import pages.ProductPage;
 import utils.ConfigReader;
 import utils.Driver;
-import utils.ReusableMethods;
+
+@Listeners(AllureTestNg.class)
 
 
 public class CartAndFavoritesTest extends BaseTest {
@@ -19,6 +22,7 @@ public class CartAndFavoritesTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
     CategoryPage categoryPage = new CategoryPage();
     ProductPage productPage = new ProductPage();
+
 
 
     @BeforeClass
@@ -31,6 +35,7 @@ public class CartAndFavoritesTest extends BaseTest {
 
     }
 
+
     @Test
     public void verifyCartAndFavorites() {
 
@@ -42,7 +47,7 @@ public class CartAndFavoritesTest extends BaseTest {
                      setFilter("Beden", "6-7 Yaş").
                      setFilter("Renk", "bej").
                      sortOptions("En çok satanlar").                         // urunleri "En çok satanlar" seklinde siralar
-                     productSelect(4);                              // ilk sıradaki 4.ürünün üzerine tıklar
+                     productSelect(3);                              // ilk sıradaki 3.ürünün üzerine tıklar
         productPage.chooseSize();                                            // bedeni tükenmiş olmayan bir yaş grubu seçilir
 
 

@@ -1,24 +1,15 @@
 package pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.Driver;
-import utils.ReusableMethods;
 
-import java.time.Duration;
 import java.util.List;
 
-public class CategoryPage {
-
-    public CategoryPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
+public class CategoryPage extends BasePage {
 
 
     @FindBy(xpath = "//div[@class='product-grid']//div[@class='product-card product-card--one-of-4']")
@@ -42,10 +33,12 @@ public class CategoryPage {
 
 
 
+
     public CategoryPage productSelect(int productNo) { // karsimiza gelen urunlerden istenilen urune tiklamaya yarayan method
 
         productList.get(productNo - 1).click();
         return this;
+
     }
 
 
@@ -59,14 +52,14 @@ public class CategoryPage {
 
                 if (!filterName.equalsIgnoreCase("RENK") && filterName.equalsIgnoreCase(filterCategory)) {
 
-                    ReusableMethods.scrollToElement(Driver.getDriver(), filters);
-                    ReusableMethods.wait(1);
+                    scrollToElement(Driver.getDriver(), filters);
+                    wait(1);
 
                     for (WebElement option : filterOptionList) {
                         String optionName = option.getText();
                         if (optionName.equalsIgnoreCase(filter)) {
                             option.click();
-                            ReusableMethods.wait(1);
+                            wait(1);
                             break;
                         }
 
@@ -74,14 +67,14 @@ public class CategoryPage {
 
                 } else if (filterName.equalsIgnoreCase("RENK")) {
 
-                    ReusableMethods.scrollToElement(Driver.getDriver(), filters);
-                    ReusableMethods.wait(1);
+                    scrollToElement(Driver.getDriver(), filters);
+                    wait(1);
 
                     for (WebElement colorOption : colorFilterOptionList) {
                         String colorOptionName = colorOption.getText();
                         if (colorOptionName.equalsIgnoreCase(filter)) {
                             colorOption.click();
-                            ReusableMethods.wait(1);
+                            wait(1);
                             break;
                         }
 
@@ -101,15 +94,15 @@ public class CategoryPage {
 
     public CategoryPage sortOptions(String sortOption) {  //  urunleri istenilen sekilde siralama methodu
 
-        ReusableMethods.wait(2);
-        ReusableMethods.scrollToTop(Driver.getDriver());
+        wait(2);
+        scrollToTop(Driver.getDriver());
         sortButton.click();
 
         for (WebElement option :sortDropdownMenu){
             String optionName = option.getText();
             if (optionName.equalsIgnoreCase(sortOption)){
                 option.click();
-                ReusableMethods.wait(1);
+                wait(1);
             }
 
         }

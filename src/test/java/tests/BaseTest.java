@@ -1,8 +1,10 @@
-package base;
+package tests;
 
+import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.*;
 import utils.ConfigReader;
 import utils.Driver;
+
 
 public class BaseTest {
 

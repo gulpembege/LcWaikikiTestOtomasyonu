@@ -1,21 +1,23 @@
-package utils;
+package pages;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.PageFactory;
+import utils.Driver;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReusableMethods {
 
-    // bu class'imizda testlerimizde surekli ihtiyac duyacagimiz methodlari olusturdum
+public class BasePage {
+
+    public BasePage() {PageFactory.initElements(Driver.getDriver(),this);
+    }
+
 
     public static void wait(int saniye) {
 

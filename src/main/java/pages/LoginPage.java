@@ -1,15 +1,14 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 import utils.Driver;
-import utils.ReusableMethods;
 
 
-
-public class LoginPage {
+public class LoginPage extends BasePage{
 
     public LoginPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -29,13 +28,14 @@ public class LoginPage {
 
 
 
+    @Step("{0} ve {1} ile uye girisi yapar")
     public LoginPage loginAsMember(String email,String password){  // uye bilgileriyle giris yapma methodu
 
         emailBox.sendKeys(ConfigReader.getProperty(email)); //config properties'den gecerli mail adresi alinip gonderilir
         continueButton.click();
         passwordBox.sendKeys(ConfigReader.getProperty(password));  //config properties'den gecerli password alinip gonderilir
         loginButton.click();
-        ReusableMethods.wait(4);
+        wait(4);
         Driver.getDriver().navigate().to(ConfigReader.getProperty("lcwUrl")); // bu asamada loadingde kaldigi icin anasayfaya yonlendirdim
 
 
