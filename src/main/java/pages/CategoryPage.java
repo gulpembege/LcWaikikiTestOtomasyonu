@@ -1,8 +1,10 @@
 package pages;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Driver;
@@ -34,6 +36,7 @@ public class CategoryPage extends BasePage {
 
 
 
+    @Step("Ilk sıradaki {0} .ürünün üzerine tıklar")
     public CategoryPage productSelect(int productNo) { // karsimiza gelen urunlerden istenilen urune tiklamaya yarayan method
 
         productList.get(productNo - 1).click();
@@ -42,6 +45,7 @@ public class CategoryPage extends BasePage {
     }
 
 
+    @Step("{0} filtre kategorisinden {1} secer")
     public CategoryPage setFilter(String filterCategory, String filter) { // filtre kategorisinin adini alip ona gore sayfayi oraya scroll edip , verilen filtreyi secme methodu
 
 
@@ -92,6 +96,7 @@ public class CategoryPage extends BasePage {
         return this;
     }
 
+    @Step("Urunleri {0} seklinde siralar")
     public CategoryPage sortOptions(String sortOption) {  //  urunleri istenilen sekilde siralama methodu
 
         wait(2);

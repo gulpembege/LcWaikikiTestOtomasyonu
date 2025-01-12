@@ -2,6 +2,7 @@ package pages;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
 
@@ -18,6 +19,7 @@ public class BasePage {
     public BasePage() {PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    Actions actions = new Actions(Driver.getDriver());
 
     public static void wait(int saniye) {
 

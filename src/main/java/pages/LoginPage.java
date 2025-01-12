@@ -10,9 +10,6 @@ import utils.Driver;
 
 public class LoginPage extends BasePage{
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
 
     @FindBy(name = "emailAndPhone")
     private WebElement emailBox;

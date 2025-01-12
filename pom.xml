@@ -51,6 +51,21 @@
             <artifactId>allure-testng</artifactId>
             <version>2.29.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.29.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.22.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
 
     </dependencies>
 
@@ -60,20 +75,25 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.14.0</version>
+                <configuration>
+                    <resultsDirectory>${basedir}/allure-results</resultsDirectory>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>report</goal>
+                            <goal>serve</goal>
                         </goals>
                     </execution>
                 </executions>
-
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
             </plugin>
         </plugins>
     </build>

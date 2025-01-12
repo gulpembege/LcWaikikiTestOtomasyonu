@@ -1,6 +1,8 @@
 package pages;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,11 +15,6 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
-    public HomePage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
-
-    Actions actions = new Actions(Driver.getDriver());
 
     @FindBy(xpath = "(//span[@class='dropdown-label'])[1]")
     private WebElement loginDropdown;
@@ -35,8 +32,8 @@ public class HomePage extends BasePage {
     private WebElement cookieAccept;
 
 
+
     @Step("Login page'e gider")
-    @Description("login sayfasina yonlendirme methodu")
     public HomePage navigateLoginPage() { // login sayfasina yonlendirme methodu
 
         if (cookieAccept.isDisplayed()){ //  cookieler kabul edilir
