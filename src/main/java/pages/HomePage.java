@@ -1,8 +1,5 @@
 package pages;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -36,6 +33,7 @@ public class HomePage extends BasePage {
     @Step("Login page'e gider")
     public HomePage navigateLoginPage() { // login sayfasina yonlendirme methodu
 
+
         if (cookieAccept.isDisplayed()){ //  cookieler kabul edilir
             cookieAccept.click();
         }
@@ -49,6 +47,7 @@ public class HomePage extends BasePage {
 
     @Step("{0} kategorisinin ustune gelir")
     public HomePage chooseCategory(String categoryName) { // istenilen kategoriyi secip uzerine hover eden method
+
 
         for (WebElement category : categoryList) {
 

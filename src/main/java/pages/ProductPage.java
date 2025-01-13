@@ -28,20 +28,39 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "(//*[@class='dropdown-label'])[3]")
     private WebElement cartButton;
 
+    @FindBy(css = "a[class='color-option active'] label[class='color-label']")
+    private WebElement colorLabel;
+
+    @FindBy(xpath = "//*[@class='current-price']")
+    private WebElement price;
+
+
+
+    public String productName;
+    public String productColor;
+    public String productQuantity;
+    public String productPrice;
 
 
     @Step("Bedeni tukenmis olmayan bir yas grubu secilir")
     public ProductPage chooseSize() {
+
         Faker faker = new Faker();
         int sizeOfList = availableSizeList.size();
         int randomSize = faker.number().numberBetween(0, sizeOfList);
-        Driver.getDriver().navigate().refresh();
-        availableSizeList.get(randomSize).click();
+        try {
+            availableSizeList.get(randomSize).click();
+        } catch (Exception e) {
+            Driver.getDriver().navigate().refresh();
+            availableSizeList.get(randomSize).click();
+        }
+        scrollToElement(Driver.getDriver(),addToCartButton);
         return this;
     }
 
     @Step("Urun sepete eklenir")
     public ProductPage addToCart() {
+
         addToCartButton.click();
         return this;
     }
@@ -57,4 +76,28 @@ public class ProductPage extends BasePage {
         return this;
     }
 
+    public ProductPage productInfos(){
+        productName=productTitle.getText();
+        productColor=colorLabel.getText();
+        productPrice=price.getText();
+        productQuantity="1";
+        return this;
+
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getProductColor() {
+        return productColor;
+    }
+
+    public String getProductQuantity() {
+        return productQuantity;
+    }
+
+    public String getProductPrice() {
+        return productPrice;
+    }
 }

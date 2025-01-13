@@ -32,7 +32,7 @@ public class LoginPage extends BasePage{
         continueButton.click();
         passwordBox.sendKeys(ConfigReader.getProperty(password));  //config properties'den gecerli password alinip gonderilir
         loginButton.click();
-        wait(4);
+        wait(3);
         Driver.getDriver().navigate().to(ConfigReader.getProperty("lcwUrl")); // bu asamada loadingde kaldigi icin anasayfaya yonlendirdim
 
 

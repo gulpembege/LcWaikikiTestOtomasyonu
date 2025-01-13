@@ -42,6 +42,7 @@ public class CategoryPage extends BasePage {
         productList.get(productNo - 1).click();
         return this;
 
+
     }
 
 
