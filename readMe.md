@@ -5,7 +5,7 @@
 
 <div align="center">  
 
-*~Burada projenin calisir halinin gif seklinde goruntusu acilacaktir , lutfen yuklenmediyse biraz bekleyiniz~*
+*|Burada projenin calisir halinin gif seklinde goruntusu acilacaktir , lutfen yuklenmediyse biraz bekleyiniz|*
 
 </div>
 
