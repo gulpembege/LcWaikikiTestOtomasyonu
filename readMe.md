@@ -15,6 +15,7 @@
 ##  🚀 <span style="color:red ;font-family:Courier New">Kullanılan Teknolojiler</span>
 
 - **Java 17**: Projenin ana programlama dili.
+- **Selenium**:Projede kullanici etkilesimlerini simule etmek ve testleri gerceklestirmek icin kullanildi.
 - **Maven**: Proje yönetimi ve bağımlılık yönetimi için kullanıldı.
 - **TestNG**: POM kullanilarak test senaryolarını yazmak ve yurutmek için kullanıldı.
 - **Allure Reports**:Testlerin raporlanması için kullanıldı.
