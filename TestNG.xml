@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="LC Waikiki Order Process">
+    <test name="Cart and Favorites Test">
+        <classes>
+            <class name="tests.CartAndFavoriteTest" />
+        </classes>
+    </test>
+</suite>

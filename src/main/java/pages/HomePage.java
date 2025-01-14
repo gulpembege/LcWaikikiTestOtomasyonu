@@ -30,7 +30,7 @@ public class HomePage extends BasePage {
 
 
 
-    @Step("Login page'e gider")
+
     public HomePage navigateLoginPage() { // login sayfasina yonlendirme methodu
 
 
@@ -45,7 +45,7 @@ public class HomePage extends BasePage {
 
     }
 
-    @Step("{0} kategorisinin ustune gelir")
+
     public HomePage chooseCategory(String categoryName) { // istenilen kategoriyi secip uzerine hover eden method
 
 
@@ -61,13 +61,13 @@ public class HomePage extends BasePage {
             }
         }
         return this;
-        // ReusableMethods.fullpageScreenshot(Driver.getDriver(), "categories");
+
     }
 
 
 
-    @Step("Alt kategorilerden {0} kategorisinin ustune gelir")
-    public HomePage chooseSubCategory(String subCategoryName) { // istenilen alt kategoriyi secip uzerine hover eden method
+
+    public HomePage chooseSubCategory(String subCategoryName) {
         subCategoryName = subCategoryName.toUpperCase();
 
         WebElement subCategory = Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + subCategoryName + "']"));
@@ -75,12 +75,12 @@ public class HomePage extends BasePage {
         wait(2);
 
         return this;
-        //  ReusableMethods.webElementSS(subCategory);
+
 
     }
 
-    @Step("Acilan kategorilerden {0} secer")
-    public HomePage chooseCategoryProduct(String categoryProductName) { // Acilan dropdownmenuden istenilen urun kategorisine tiklayan methodu
+
+    public HomePage chooseCategoryProduct(String categoryProductName) {
         wait(2);
         for (WebElement categoryProduct : categoryProductsList) {
 

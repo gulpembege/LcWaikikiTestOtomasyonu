@@ -36,8 +36,8 @@ public class CategoryPage extends BasePage {
 
 
 
-    @Step("Ilk sıradaki {0} .ürünün üzerine tıklar")
-    public CategoryPage productSelect(int productNo) { // karsimiza gelen urunlerden istenilen urune tiklamaya yarayan method
+
+    public CategoryPage productSelect(int productNo) {
 
         productList.get(productNo - 1).click();
         return this;
@@ -46,8 +46,8 @@ public class CategoryPage extends BasePage {
     }
 
 
-    @Step("{0} filtre kategorisinden {1} secer")
-    public CategoryPage setFilter(String filterCategory, String filter) { // filtre kategorisinin adini alip ona gore sayfayi oraya scroll edip , verilen filtreyi secme methodu
+
+    public CategoryPage setFilter(String filterCategory, String filter) {
 
 
         for (WebElement filters : filterCategoryList) {
@@ -97,8 +97,8 @@ public class CategoryPage extends BasePage {
         return this;
     }
 
-    @Step("Urunleri {0} seklinde siralar")
-    public CategoryPage sortOptions(String sortOption) {  //  urunleri istenilen sekilde siralama methodu
+
+    public CategoryPage sortOptions(String sortOption) {
 
         wait(2);
         scrollToTop(Driver.getDriver());

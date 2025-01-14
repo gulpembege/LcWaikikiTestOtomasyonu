@@ -25,12 +25,12 @@ public class LoginPage extends BasePage{
 
 
 
-    @Step("{0} ve {1} ile uye girisi yapar")
-    public LoginPage loginAsMember(String email,String password){  // uye bilgileriyle giris yapma methodu
 
-        emailBox.sendKeys(ConfigReader.getProperty(email)); //config properties'den gecerli mail adresi alinip gonderilir
+    public LoginPage loginAsMember(String email,String password){
+
+        emailBox.sendKeys(ConfigReader.getProperty(email));
         continueButton.click();
-        passwordBox.sendKeys(ConfigReader.getProperty(password));  //config properties'den gecerli password alinip gonderilir
+        passwordBox.sendKeys(ConfigReader.getProperty(password));
         loginButton.click();
         wait(3);
         Driver.getDriver().navigate().to(ConfigReader.getProperty("lcwUrl")); // bu asamada loadingde kaldigi icin anasayfaya yonlendirdim

@@ -42,7 +42,7 @@ public class ProductPage extends BasePage {
     public String productPrice;
 
 
-    @Step("Bedeni tukenmis olmayan bir yas grubu secilir")
+
     public ProductPage chooseSize() {
 
         Faker faker = new Faker();
@@ -58,19 +58,19 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    @Step("Urun sepete eklenir")
+
     public ProductPage addToCart() {
 
         addToCartButton.click();
         return this;
     }
 
-    @Step("Urunun sepete eklendigini dogrular")
+
     public boolean isProductAddedNotificationDisplay() {
         return cartNotification.isDisplayed();
     }
 
-    @Step("Sepete gider")
+
     public ProductPage navigateToCart(){
         cartButton.click();
         return this;

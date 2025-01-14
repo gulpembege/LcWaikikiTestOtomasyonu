@@ -3,14 +3,10 @@ package tests;
 
 import org.testng.Assert;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.ConfigReader;
 import utils.Driver;
-
-@Listeners({io.qameta.allure.testng.AllureTestNg.class})
 
 
 public class CartAndFavoriteTest extends BaseTest {
@@ -44,7 +40,8 @@ public class CartAndFavoriteTest extends BaseTest {
                 setFilter("Renk", "bej").
                 sortOptions("En çok satanlar").                             // urunleri "En çok satanlar" seklinde siralar
                 productSelect(4);                                  // ilk sıradaki 4.ürünün üzerine tıklar
-        productPage.chooseSize().addToCart();                               // bedeni tükenmiş olmayan bir yaş grubu secer ve sepete ekler
+        productPage.chooseSize().                                           // bedeni tükenmiş olmayan bir yaş grubu secer
+                    addToCart();                                            // sepete ekler
 
         Assert.assertTrue(productPage.isProductAddedNotificationDisplay(), "Urun sepete eklenemedi!"); // urunun sepete ekledngini dogrular
 
