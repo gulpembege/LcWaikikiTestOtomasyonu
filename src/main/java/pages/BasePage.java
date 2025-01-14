@@ -31,6 +31,10 @@ public class BasePage {
 
     }
 
+    public static void refresh(){
+        Driver.getDriver().navigate().refresh();
+    }
+
 
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);

@@ -39,7 +39,7 @@ public class CartAndFavoriteTest extends BaseTest {
                 setFilter("Beden", "6-7 Yaş").
                 setFilter("Renk", "bej").
                 sortOptions("En çok satanlar").                             // urunleri "En çok satanlar" seklinde siralar
-                productSelect(4);                                  // ilk sıradaki 4.ürünün üzerine tıklar
+                productSelect(1);                                  // ilk sıradaki 4.ürünün üzerine tıklar
         productPage.chooseSize().                                           // bedeni tükenmiş olmayan bir yaş grubu secer
                     addToCart();                                            // sepete ekler
 

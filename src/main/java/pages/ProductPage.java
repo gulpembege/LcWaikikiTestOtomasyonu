@@ -3,6 +3,7 @@ package pages;
 import com.github.javafaker.Faker;
 import dev.failsafe.internal.util.Assert;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -34,6 +35,8 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//*[@class='current-price']")
     private WebElement price;
 
+    @FindBy(xpath = "//*[@class='price-in-cart']")
+    private WebElement discountPrice;
 
 
     public String productName;
@@ -51,7 +54,7 @@ public class ProductPage extends BasePage {
         try {
             availableSizeList.get(randomSize).click();
         } catch (Exception e) {
-            Driver.getDriver().navigate().refresh();
+            refresh();
             availableSizeList.get(randomSize).click();
         }
         scrollToElement(Driver.getDriver(),addToCartButton);
@@ -79,7 +82,12 @@ public class ProductPage extends BasePage {
     public ProductPage productInfos(){
         productName=productTitle.getText();
         productColor=colorLabel.getText();
-        productPrice=price.getText();
+        try {
+            productPrice=price.getText();
+        } catch (NoSuchElementException e){
+            productPrice=discountPrice.getText();
+        }
+
         productQuantity="1";
         return this;
 
