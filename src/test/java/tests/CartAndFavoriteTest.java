@@ -39,7 +39,7 @@ public class CartAndFavoriteTest extends BaseTest {
                 setFilter("Beden", "6-7 Yaş").
                 setFilter("Renk", "bej").
                 sortOptions("En çok satanlar").                             // urunleri "En çok satanlar" seklinde siralar
-                productSelect(1);                                  // ilk sıradaki 4.ürünün üzerine tıklar
+                productSelect(4);                                  // ilk sıradaki 4.ürünün üzerine tıklar
         productPage.chooseSize().                                           // bedeni tükenmiş olmayan bir yaş grubu secer
                     addToCart();                                            // sepete ekler
 
@@ -54,10 +54,10 @@ public class CartAndFavoriteTest extends BaseTest {
                      navigateToCart();                          // sepetim ekranina gider
         cartPage.cartInfos();                                   // sepet bilgilerini kaydeder
 
-        Assert.assertTrue(productPage.getProductName().contains(cartPage.getProductName()));  //sepetim ekraninda secilen urunun "adi","rengi","adet" alanlarini dogrular
-        Assert.assertTrue(productPage.getProductColor().contains(cartPage.getProductColor()));
-        Assert.assertTrue(productPage.getProductQuantity().contains(cartPage.getProductQuantity()));
-        Assert.assertTrue(productPage.getProductPrice().contains(cartPage.getProductPrice())); // urunun tutari ile "odeme adimina gec" alaninda yazan tutarin eslestigini dogrular
+        Assert.assertTrue(productPage.getProductName().contains(cartPage.getProductName()),"Urun ismi eslesmiyor!");  //sepetim ekraninda secilen urunun "adi","rengi","adet" alanlarini dogrular
+        Assert.assertTrue(productPage.getProductColor().contains(cartPage.getProductColor()),"Urun rengi eslesmiyor!");
+        Assert.assertTrue(productPage.getProductQuantity().contains(cartPage.getProductQuantity()),"Urun miktari eslesmiyor!");
+        Assert.assertTrue(productPage.getProductPrice().contains(cartPage.getProductPrice()),"Urun fiyati eslemiyor!"); // urunun tutari ile "odeme adimina gec" alaninda yazan tutarin eslestigini dogrular
 
     }
 
@@ -69,7 +69,7 @@ public class CartAndFavoriteTest extends BaseTest {
                  navigateToFavorites();                    // favorilerim sayfasina gider
         favoritesPage.favoritesInfo();                     // favorilerdeki urun bilgisini kaydeder
 
-        Assert.assertTrue(productPage.getProductName().contains(favoritesPage.getProductName())); // favorilere eklenen urunun listelendigini dogrular
+        Assert.assertTrue(productPage.getProductName().contains(favoritesPage.getProductName()),"Urun ismi eslesmiyor!"); // favorilere eklenen urunun listelendigini dogrular
 
     }
 

@@ -57,7 +57,7 @@ public class BasePage {
 
         // 1.adim : fotograf cekecegimiz webelementi lcoate edelim
         // 2.adim : resmi kaydedecegimiz file ' i olusturalim
-        File webElementSS = new File("src/screenshots/" + tarihMuhru + ".png");
+        File webElementSS = new File("src/main/resources/media" + tarihMuhru + ".png");
         // 3.adim : ss alip gecici dosyaya kaydedelim
         File geciciDosya = ssCekilecekElement.getScreenshotAs(OutputType.FILE);
         // 4.adim : gecici dosyayi asil dosyaya kopyalayalim
@@ -73,7 +73,7 @@ public class BasePage {
         TakesScreenshot tss = (TakesScreenshot) driver;
 
         // 2.adim cektigimiz screenshot'i kaydedecegimiz dosyayi olusturalim
-        File tumSayfaScreenshot = new File("src/screenshots/" + raporIsmi + ".png");
+        File tumSayfaScreenshot = new File("src/main/resources/media/" + raporIsmi + ".png");
 
         // 3.adim sayfa fotografini cekip gecici bir dosyaya yukleyelim
         File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
