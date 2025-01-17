@@ -53,5 +53,10 @@
 
 ![allure_report](src/main/resources/media/allureReport.PNG)
 
+##  📩 <span style="color:orange;font-family:Courier New">Iletisim</span>
+
+- **Proje ile alakali soru ve gelistirme onerileri icin [gulpembe.gemicioglu@hotmail.com](mailto:gulpembe.gemicioglu@hotmail.com) uzerinden benimle iletisime gecebilirsiniz!**
+
+
 
 
