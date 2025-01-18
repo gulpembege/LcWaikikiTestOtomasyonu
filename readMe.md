@@ -34,11 +34,14 @@
 
 ## 🛠️ <span style="color:purple;font-family:Courier New">Kurulum ve Calistirma</span>
 
-1. **Bagimliliklari Yukleme**:
+1. **Projeyi klonlama**:
+-  Projeyi klonlayabilmek icin `git clone https://github.com/gulpembege/LcWaikikiTestOtomasyonu.git` komutunu calistirin
+
+2. **Bagimliliklari Yukleme**:
 - Maven araciligiyla projenin bagimliliklarini indirmek icin `mvn clean install` komutunu calistirin
 
-2. **Testleri Calistirma**:
-- `src/test/java` altındaki tum testleri calistirmak icin `mvn clean test` komutunu calistirin.
+3. **Testleri Calistirma**:
+- `src/test/java` altındaki tum testleri calistirmak icin `mvn clean test` komutunu calistirin
 
 ##  ✅ <span style="color:orange;font-family:Courier New">Testler</span>
 
