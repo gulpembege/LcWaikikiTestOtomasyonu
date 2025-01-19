@@ -35,7 +35,7 @@ public class CartAndFavoriteTest extends BaseTest {
                 chooseSubCategory("Kız çocuk").               // alt kategorilerden Kız çocuk(6-14 YAŞ) kategorisinin ustune gelir
                 chooseCategoryProduct("Mont ve Kaban");    // acilan kategorilerden "Mont ve Kaban" secer
         categoryPage.setFilter("Beden", "5-6 Yaş").
-                setFilter("Beden", "6 Yaş").                // beden filtresini "5-6" "6" ve "6-7" ve renk filtresini "bej" olarak secer
+                setFilter("Beden", "6 Yaş").               // beden filtresini "5-6" "6" ve "6-7" ve renk filtresini "bej" olarak secer
                 setFilter("Beden", "6-7 Yaş").
                 setFilter("Renk", "bej").
                 sortOptions("En çok satanlar").                             // urunleri "En çok satanlar" seklinde siralar
